@@ -1,5 +1,8 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
+import vue from '@vitejs/plugin-vue'
+
+// eslint-disable-next-line import/order
+import path from 'node:path'
+import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
@@ -16,5 +19,11 @@ export default defineConfig(async () => ({
   },
   // 3. to make use of `TAURI_DEBUG` and other env variables
   // https://tauri.studio/v1/api/config#buildconfig.beforedevcommand
-  envPrefix: ["VITE_", "TAURI_"],
-}));
+  envPrefix: ['VITE_', 'TAURI_'],
+
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+}))
